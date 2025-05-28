@@ -1,0 +1,225 @@
+.hit-animation {
+    animation: hitFlash 0.3s;
+}
+
+@keyframes hitFlash {
+    0% { background-color: inherit; }
+    50% { background-color: rgba(255, 0, 0, 0.5); }
+    100% { background-color: inherit; }
+}
+
+/* Styles pour le modal d'attaque */
+.modal-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a3a6a ;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.attack-modal {
+    background: linear-gradient(135deg, var(--ciel-profond), var(--ciel-moyen));
+    border-radius: 10px;
+    padding: 25px;
+    width: 90%;
+    max-width: 600px;
+    color: white;
+    box-shadow: 0 0 20px rgba(15, 48, 213, 0.5);
+    border: 2px solid #4a4a5a;
+}
+
+.combatants-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.combatant {
+    text-align: center;
+    flex: 1;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.attacker {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid #4CAF50;
+}
+
+.defender {
+    background: rgba(244, 67, 54, 0.2);
+    border: 1px solid #F44336;
+}
+
+.vs-circle {
+    background: #12126c;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+.hero-icon {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.attack-options {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.attack-type-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.attack-type-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.attack-type-btn[data-type="quick"] {
+    background: #2196F3;
+    color: white;
+}
+
+.attack-type-btn[data-type="heavy"] {
+    background: #FF9800;
+    color: white;
+}
+
+.attack-type-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dice-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.dice-large {
+    font-size: 5rem;
+    margin: 0 20px;
+    transition: transform 0.5s;
+}
+
+.dice-large.rolling {
+    animation: spin 0.5s linear infinite;
+}
+
+.dice-result-info {
+    text-align: center;
+}
+
+.result-scale {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.scale-item {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.fail {
+    background: #F44336;
+}
+
+.success {
+    background: #4CAF50;
+}
+
+.critical {
+    background: #FFC107;
+    color: #333;
+}
+
+.attack-result {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animations et styles des résultats */
+.hit-animation {
+    animation: hitShake 0.5s;
+}
+
+@keyframes hitShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+.damage-display {
+    margin: 10px 0;
+    font-size: 1.3em;
+}
+
+.damage-value {
+    font-weight: bold;
+    color: #FF5722;
+}
+
+.critical-hit {
+    color: #FFC107;
+    font-size: 1.5em;
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.7);
+}
+
+.critical-text {
+    color: #FFC107;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+.hp-change {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+.active {
+    box-shadow: 0 0 0 3px white;
+}

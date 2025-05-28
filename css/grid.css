@@ -1,0 +1,104 @@
+/* Arène */
+.grid-7x7 {
+    display: grid;
+    grid-template-columns: repeat(7, 90px);
+    grid-template-rows: repeat(7, 90px);
+    gap: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(26, 58, 106, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(77, 141, 245, 0.2);
+    box-shadow: 0 10px 30px rgba(10, 26, 58, 0.5);
+  }
+/* Cases */
+.cell {
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 42, 90, 0.5);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(77, 141, 245, 0.3), transparent);
+    z-index: -1;
+  }
+  
+  .cell:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(77, 141, 245, 0.3);
+    background: rgba(77, 141, 245, 0.2);
+  }
+  
+  /* Éléments spéciaux */
+  .cell.obstacle {
+    background: rgba(255, 100, 100, 0.2);
+    color: #ff6464;
+  }
+  
+  .cell.bonus {
+    background: rgba(255, 215, 0, 0.2);
+    color: gold;
+    font-size: 1.4rem;
+  }
+  
+  /* Animation de flottement */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  .cell {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: calc(var(--x) * 0.1s + var(--y) * 0.1s);
+  }
+
+  .cell.hero {
+    background-color: #fff7e6;
+    padding: 2px;
+}
+
+.cell.hero:hover {
+    transform: scale(1.05);
+}
+
+.cell.movable {
+    outline: 3px dashed #1e90ff;
+    outline-offset: -3px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+}
+
+.cell.attackable {
+    outline: 2px solid red;
+    animation: pulse-attack 0.5s infinite;
+}
+
+@keyframes pulse {
+    0% { outline-color: #1e90ff; }
+    50% { outline-color: #63b3ed; }
+    100% { outline-color: #1e90ff; }
+}
+
+@keyframes pulse-attack {
+    0% { box-shadow: 0 0 5px red; }
+    50% { box-shadow: 0 0 15px red; }
+    100% { box-shadow: 0 0 5px red; }
+}

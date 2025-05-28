@@ -1,0 +1,55 @@
+.particle {
+    position: fixed;
+    background: var(--bleu-clair);
+    border-radius: 50%;
+    z-index: -1;
+    animation: floatParticle linear infinite;
+  }
+  
+  @keyframes floatParticle {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-100vh) translateX(100px); }
+    100% { transform: translateY(-200vh) translateX(0); }
+  }
+
+  .star {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    z-index: -2;
+    animation: twinkle ease-in-out infinite;
+    filter: blur(0.5px);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.dust {
+    position: fixed;
+    background: rgba(77, 141, 245, 0.6);
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(1px);
+    animation: floatDust linear infinite;
+}
+
+@keyframes floatDust {
+    from { transform: translateY(0) translateX(0); }
+    to { transform: translateY(-100vh) translateX(100px); }
+}
+
+.cloud {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(15px);
+    z-index: -1;
+    animation: floatCloud linear infinite;
+}
+
+@keyframes floatCloud {
+    from { transform: translateX(-150px); }
+    to { transform: translateX(calc(100vw + 150px)); }
+}
