@@ -1,0 +1,126 @@
+/* Arène */
+.grid-7x7 {
+    display: grid;
+    grid-template-columns: repeat(7, 90px);
+    grid-template-rows: repeat(7, 90px);
+    gap: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(26, 58, 106, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(77, 141, 245, 0.2);
+    box-shadow: 0 10px 30px rgba(10, 26, 58, 0.5);
+}
+.player-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
+.active-player {
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.player-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.player-stat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: linear-gradient(to bottom, #4d8df5, #1a3a6a);
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#special-btn {
+    background: linear-gradient(to bottom, #9c27b0, #6a1b9a);
+}
+
+#attack-btn {
+    background: linear-gradient(to bottom, #f44336, #c62828);
+}
+
+#defend-btn {
+    background: linear-gradient(to bottom, #FF9800, #F57C00);
+}
+
+.player-info-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cooldown {
+    color: #FF9800;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.ready {
+    color: #4CAF50;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.cell.attackable {
+    outline: 2px solid red;
+    animation: pulse-attack 0.5s infinite;
+}
+
+@keyframes pulse-attack {
+    0% { box-shadow: 0 0 5px red; }
+    50% { box-shadow: 0 0 15px red; }
+    100% { box-shadow: 0 0 5px red; }
+}
+
+.hit-animation {
+    animation: hitFlash 0.3s;
+}
+
+@keyframes hitFlash {
+    0% { background-color: inherit; }
+    50% { background-color: rgba(255, 0, 0, 0.5); }
+    100% { background-color: inherit; }
+}
+#game-arena {
+    display: flex;
+    justify-content: center; /* centre les enfants horizontalement */
+    align-items: flex-start; /* aligne en haut, ou center si tu veux centrer verticalement */
+    gap: 2rem; /* espace entre les éléments */
+    padding: 2rem;
+    flex-wrap: wrap; /* permet d'aller à la ligne si l'écran est trop petit */
+
+    /* Pour recentrer sur la page */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}

@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(135deg, var(--ciel-profond), var(--ciel-moyen));
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, white, #aad4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(74, 144, 226, 0.3);
+}
+
+.icon {
+    font-size: 24px;
+}
+.modal-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c3e50, #1a1a2e);
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid #4a4a4a;
+    text-align: center;
+    color: white;
+    animation: modalFadeIn 0.4s ease-out;
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f1c40f;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.modal-message {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.modal-button-primary {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.modal-button-primary:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+audio {
+    display: none;
+}
+
+.active {
+    box-shadow: 0 0 0 3px white;
+}
+.intro-rules {
+    background: rgba(10, 26, 58, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.intro-rules ul {
+    padding-left: 1.5rem;
+}
+
+.intro-rules li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.glow-button {
+    background: linear-gradient(to right, #4d8df5, #1a3a6a);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(77, 141, 245, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(77, 141, 245, 0.8);
+}
+
+.glow-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 45%,
+        rgba(255, 255, 255, 0) 50%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}

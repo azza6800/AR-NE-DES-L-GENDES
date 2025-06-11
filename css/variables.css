@@ -1,0 +1,8 @@
+/* Palette bleu ciel moderne */
+:root {
+    --ciel-profond: #0a1a3a;
+    --ciel-moyen: #1a3a6a;
+    --ciel-clair: #4d8df5;
+    --nuage-light: rgba(255, 255, 255, 0.9);
+    --nuage-dark: rgba(200, 220, 255, 0.6);
+}

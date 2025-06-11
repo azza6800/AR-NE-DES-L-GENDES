@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arène des Légendes</title>
+    <link rel="stylesheet" href="css/arena.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/background-effect.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/heroes.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>ARÈNE DES LÉGENDES</h1>
+    </header>
+    
+    <main id="game-container">
+        <!-- Écran de sélection des joueurs -->
+         <!-- Ajouter ceci comme premier écran dans le game-container -->
+<!-- Dans la partie <main id="game-container"> -->
+<div id="intro-screen" class="screen active">
+    <div class="intro-content">
+        <h2>Bienvenue dans l'Arène des Légendess</h2>
+        <div class="intro-heroes">
+            <div class="hero-preview">
+                <img class="hero-image" src="assets/images/Chevalier.gif" alt="Chevalier">
+                <span>Chevalier</span>
+            </div>
+            <div class="hero-preview">
+                <img class="hero-image" src="assets/images/ninja.gif" alt="Ninja">
+                <span>Ninja</span>
+            </div>
+            <div class="hero-preview">
+                <img class="hero-image" src="assets/images/Sorcier.gif" alt="Sorcier">
+                <span>Sorcier</span>
+            </div>
+        </div>
+        <div class="intro-rules">
+            <h3>Règles du jeu :</h3>
+            <ul>
+                <li>Chaque joueur choisit un héros avec des capacités uniques</li>
+                <li>L'ordre de jeu est déterminé par un lancer de dé</li>
+                <li>Déplacez-vous et attaquez pour éliminer vos adversaires</li>
+                <li>Le dernier survivant remporte la victoire !</li>
+            </ul>
+        </div>
+        <button id="start-game-btn" class="glow-button">Commencer</button>
+    </div>
+</div>
+
+            
+        <div id="player-selection" class="screen active">
+            <h1>Nombre de joueurs</h1>
+            <div class="player-buttons">
+                <button data-players="2">2 Joueurs</button>
+                <button data-players="3">3 Joueurs</button>
+                <button data-players="4">4 Joueurs</button>
+            </div>
+        </div>
+        
+        <!-- Écran de sélection des héros -->
+        <div id="hero-selection" class="screen">
+            <h2>Choisissez votre héros <span id="current-player-display">(Joueur 1)</span></h2>
+            <div class="hero-buttons">
+                <button data-hero="knight">
+                    <img src="assets/images/Chevalier.gif" alt="Chevalier">
+                    <div class="hero-info">
+                        <span class="hero-name">Chevalier</span>
+                        <small>HP: 100 | Vitesse: 1 | Portée: 1</small>
+                    </div>
+                </button>
+                <button data-hero="ninja">
+                    <img src="assets/images/ninja.gif" alt="Ninja">
+                    <div class="hero-info">
+                        <span class="hero-name">Ninja</span>
+                        <small>HP: 70 | Vitesse: 2 | Portée: 1</small>
+                    </div>
+                </button>
+                <button data-hero="sorcerer">
+                    <img src="assets/images/Sorcier.gif" alt="Sorcier">
+                    <div class="hero-info">
+                        <span class="hero-name">Sorcier</span>
+                        <small>HP: 80 | Vitesse: 1 | Portée: 3</small>
+                    </div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Écran de détermination de l'ordre de jeu -->
+        <div id="dice-roll-screen" class="screen">
+            <h2>Ordre de jeu - Joueur <span id="current-rolling-player">1</span></h2>
+            <div class="dice-container">
+                <div id="dice" class="dice">⚀</div>
+                <button id="roll-dice-btn" class="roll-button">Lancer le dé</button>
+            </div>
+            <div id="roll-results" class="results-container"></div>
+        </div>
+
+        <!-- Écran principal du jeu -->
+       <table style="width: 200%;">
+    <tr id="game-arena" class="game-screen">
+        <!-- Colonne gauche (fixe, centrée, contenu en haut) -->
+        <td style="width: 250px; text-align: center; vertical-align: top;">
+            <div id="player-info" class="player-info-panel"></div>
+        </td>
+        <td></td>
+        <!-- Colonne centrale (fluide) -->
+        <td style=" text-align: center; vertical-align: top;">
+            <div class="arena-wrapper">
+                <div id="turn-info" class="turn-banner">Tour du joueur</div>
+                <div id="arena" class="grid-7x7"></div>
+            </div>
+        </td>
+        <td></td>
+        <td style="width: 300px; text-align: center; vertical-align: top;">
+    <!-- Ligne 1 : Boutons d'action -->
+    <div id="action-panel" class="action-panel" style="margin-bottom: 10px;">
+        <button id="move-btn" class="action-btn">Déplacer</button>
+        <button id="attack-btn" class="action-btn">Attaquer</button>
+        <button id="special-btn" class="action-btn">Pouvoir</button>
+        <button id="defend-btn" class="action-btn">Défendre</button>
+        <button id="end-turn-btn" class="action-btn">Pass</button>
+    </div>
+    
+    <!-- Ligne 2 : Journal de combat -->
+    <div id="combat-log" class="combat-log" style="border: 1px solid #ccc; padding: 5px; min-height: 100px;">
+        <!-- Contenu du journal ici -->
+    </div>
+</td>
+    </tr>
+</table>
+
+
+
+        
+        <!-- Écran de lancer de dé pour les attaques -->
+        <!-- Écran de lancer de dé pour les attaques -->
+<div id="attack-roll-screen" class="modal-screen">
+    <div class="modal-content attack-modal">
+        <h2>Lancer d'attaque</h2>
+        
+        <div class="combatants-display">
+            <div class="combatant attacker">
+                <h3 id="attack-roll-attacker"></h3>
+                <div class="hero-icon"></div>
+            </div>
+            
+            <div class="vs-circle">VS</div>
+            
+            <div class="combatant defender">
+                <h3 id="attack-roll-defender"></h3>
+                <div class="hero-icon"></div>
+            </div>
+        </div>
+        
+        <div class="attack-options">
+            <h3>Type d'attaque :</h3>
+            <div class="attack-type-buttons">
+                <button class="attack-type-btn" data-type="quick">Attaque Rapide</button>
+                <button class="attack-type-btn" data-type="heavy">Attaque Lourde</button>
+            </div>
+        </div>
+        
+        <div class="dice-section">
+            <div id="attack-dice" class="dice-large">⚀</div>
+            <div class="dice-result-info">
+                <h3>Résultat :</h3>
+                <div class="result-scale">
+                    <div class="scale-item fail">1-2 : Échec</div>
+                    <div class="scale-item success">3-5 : Réussite</div>
+                    <div class="scale-item critical">6 : Critique</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="attack-result" class="attack-result"></div>
+        
+        <button id="attack-roll-button" class="roll-button">Lancer le dé</button>
+    </div>
+</div>
+<!-- Modale d'élimination -->
+<div id="elimination-modal" class="modal-screen">
+    <div class="modal-content elimination-modal">
+        <div class="modal-title">Joueur Éliminé!</div>
+        <div class="modal-message" id="elimination-message"></div>
+        <div class="modal-buttons">
+            <button class="modal-button modal-button-primary" id="continue-after-elimination">Continuer</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de victoire -->
+<div id="victory-modal" class="modal-screen">
+    <div class="modal-content victory-modal">
+        <div class="victory-icon">🏆</div>
+        <div class="modal-title">Victoire!</div>
+        <div class="modal-message" id="victory-modal-message"></div>
+        <div class="modal-buttons">
+            <button class="modal-button modal-button-primary" id="restart-after-victory">Rejouer</button>
+        </div>
+    </div>
+</div>
+<!-- Sons -->
+<audio id="elimination-sound" src="assets/audio/GAMEOVER.wav" preload="auto"></audio>
+<audio id="victory-sound" src="assets/audio/winner2.wav" preload="auto"></audio>
+<audio id="intro-music" src="assets/audio/music intro.mp3" preload="auto"></audio>
+        
+        <!-- Écran de victoire -->
+        <div id="victory-screen" class="screen">
+            <div class="victory-content">
+                <h2 id="victory-message"></h2>
+                <button id="restart-btn" class="action-btn">Rejouer</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
